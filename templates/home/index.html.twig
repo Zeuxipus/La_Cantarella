@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %} {% block title %}Accueil{% endblock %} {% block
+body %} {% include "header/header.html.twig" %}
+<div class="bg-white ml-20 mt-20 w-2/3">
+  <p>Actus et Concerts</p>
+</div>
+<div class="container flex justify-around pt-8">
+  {% for article in articles %}
+  <div
+    class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
+  >
+    <h5
+      class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+    >
+      {{ article.titre }}
+    </h5>
+    <div class="p-5">
+      <img class="rounded-t-lg" src="{{ vich_uploader_asset(article) }}" />
+      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+        {{ article.resume }}
+      </p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% include "footer/footer.html.twig" %} {% endblock %}
